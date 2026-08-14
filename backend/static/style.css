@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    /* background-color: #f4f4f4; */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 450px;
+    padding: 30px;
+    /* background-color: white; */
+    border-radius: 12px;
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.reminder-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.form-group label {
+    width: 60px;
+    font-weight: bold;
+}
+
+.form-group input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    font-size: 15px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #333;
+}
+
+.btn {
+    margin-top: 10px;
+    padding: 12px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: #333;
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+.success-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #28a745;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    z-index: 1000;
+}
