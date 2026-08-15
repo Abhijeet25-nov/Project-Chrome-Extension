@@ -24,7 +24,13 @@ def add_reminder(request):
             "created_at": reminder.created_at
         })
         
-        
         return redirect("home")
     
+    return redirect("home")
+
+def delete_reminder(request, id):
+    if request.method == "POST":
+        reminder = Reminder.objects.get(id=id)
+        reminder.delete()
+
     return redirect("home")

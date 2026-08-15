@@ -8,5 +8,7 @@ class Reminder(models.Model):
     time=models.TimeField()
     created_at= models.DateTimeField(auto_now_add=True)
 
-def __str__(self):
-    return self.title #Mainly useful for looking reminders in django admin
+    def __str__(self):
+        return self.title #Mainly useful for looking reminders in django admin
+
+

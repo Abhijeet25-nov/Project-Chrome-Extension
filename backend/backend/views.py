@@ -1,9 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from reminder.models import Reminder
+
 
 def home(request):
     # return HttpResponse("Reminder Application")
-    return render(request,"mainpage.html")
+    reminders = Reminder.objects.all()
+    return render(request,"mainpage.html",{"reminders": reminders})
 
 
 #app related methods

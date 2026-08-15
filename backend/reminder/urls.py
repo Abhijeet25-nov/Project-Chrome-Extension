@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns=[
     path("add-reminder/",views.add_reminder,name="add_reminder"),
+    path("delete-remimder/<int:id>/",views.delete_reminder,name="delete_reminder")
 ]
 

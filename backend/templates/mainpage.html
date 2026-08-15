@@ -56,6 +56,35 @@
             {% endif %} 
 
         </form> 
+        <div class="reminders-list">
+
+            <h2>Your Reminders</h2>
+
+            {% if reminders %}
+                {% for reminder in reminders %}
+
+                    <div class="reminder-card">
+                        <h3>{{ reminder.title }}</h3>
+
+                        <p>Date: {{ reminder.date }}</p>
+
+                        <p>Time: {{ reminder.time }}</p>
+
+                         <form method="POST" action="{% url 'delete_reminder' reminder.id %}">
+                                {% csrf_token %}
+                                <button class="bg-color-red color-white"type="submit">Delete</button>
+                         </form>
+
+                    </div>
+
+                {% endfor %}
+            {% else %}
+
+                <p>No reminders added yet.</p>
+
+            {% endif %}
+
+        </div>
     </div>     
 </body>
 </html>
