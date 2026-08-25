@@ -12,7 +12,9 @@
     <div class="container">
         <h1>Chrome Reminder Extension</h1>
         <!-- <div class="reminder-form"> -->
-        <form class="reminder-form" method="POST" action="{% url 'add_reminder' %}">  
+        <form class="reminder-form" 
+                method="POST" 
+                action="{% url 'add_reminder' %}">  
             {% csrf_token %}
             <div class="form-group">
                 <label for="title">Title:</label>
