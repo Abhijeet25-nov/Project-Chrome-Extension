@@ -44,6 +44,15 @@ form.addEventListener("submit", function(event) {
     .then(response => response.json())
     .then(data => {
         console.log(data);
+         
+        // Reminder From Chrome will added using this reminderDateTime returns json value as id
+        const reminderDateTime = new Date(
+            `${dateInput.value}T${timeInput.value}`
+        );
+        chrome.alarms.create(`reminder-${data.id}-${titleInput.value}`, {
+            when: reminderDateTime.getTime()
+        });
+
         alert("Reminder added successfully!");
         form.reset();
         loadReminders();
@@ -66,7 +75,10 @@ function loadReminders() {
                     <h3>${reminder.title}</h3>
                     <p>Date: ${reminder.date}</p>
                     <p>Time: ${reminder.time}</p>
-                    <button class="delete-btn" data-id="${reminder.id}">
+                    <button
+                        class="delete-btn"
+                        data-id="${reminder.id}"
+                        data-title="${reminder.title}">
                         Delete
                     </button>
                 `;
@@ -76,6 +88,7 @@ function loadReminders() {
                 const deleteButton = reminderDiv.querySelector(".delete-btn");
                 deleteButton.addEventListener("click", function() {
                     const reminderId = deleteButton.dataset.id;
+                    const reminderTitle = deleteButton.dataset.title;
 
                     fetch(`http://127.0.0.1:8000/api/reminders/${reminderId}/`, {
                         method: "DELETE"
@@ -83,6 +96,11 @@ function loadReminders() {
                     .then(response => response.json())
                     .then(data => {
                         console.log(data);
+
+                        chrome.alarms.clear(
+                            `reminder-${reminderId}-${reminderTitle}`
+                        );
+
                         alert("Reminder deleted successfully!");
                         loadReminders();
                     })

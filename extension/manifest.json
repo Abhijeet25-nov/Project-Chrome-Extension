@@ -3,9 +3,20 @@
   "name": "Reminder Extension",
   "version": "1.0",
   "description": "A Chrome extension for managing reminders using Django backend.",
+
+   "permissions": [
+    "alarms",
+    "notifications"
+  ],
+
   "action": {
     "default_popup": "popup.html"
   },
+
+  "background": {
+    "service_worker": "service_worker.js"
+  },
+
   "host_permissions": [
     "http://127.0.0.1:8000/*"
   ]
